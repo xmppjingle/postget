@@ -1,0 +1,33 @@
+<decree>
+	<get url="http://credito.com/celular/5555555">
+		<onComplete>
+			<post url="http://credito.com/cobrancaCartao/5656787210" 
+				payload="valor=10">
+				<onComplete>
+					<post url="http://credito.com/celular/5555555/recarga" 
+						payload="valor=10">
+						<onComplete>
+							<post url="http://credito.com/sms/5555555" 
+								payload="msg=Recarga com Sucesso"/>
+						</onComplete>
+						<onError>
+							<post url="http://credito.com/estornoCartao/5656787210" 
+								payload="valor=10">
+								<onComplete>
+									<post url="http://credito.com/sms/5555555" 
+										payload="msg=Valor Estornado no Cartao"/>
+								</onComplete>
+							</post>
+							<post url="http://credito.com/sms/5555555" 
+								payload="msg=Falha na Recarga"/>
+						</onError>
+					</post>
+				</onComplete>
+				<onError>
+					<post url="http://credito.com/sms/5555555" 
+						payload="msg=Falha na Cobranca da Recarga"/>
+				</onError>
+			</post>
+		</onComplete>
+	</get>
+</decree>

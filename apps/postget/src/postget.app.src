@@ -1,0 +1,16 @@
+{application, postget,
+    [
+        {description, "Basic Clexical App"},
+        {vsn, git},
+        {registered, []},
+        {applications, [
+            kernel,
+            stdlib,
+            lager,
+            exmpp
+        ]},
+        {mod, {postget_app, []}},
+        {env, [
+
+        ]}
+    ]}.

@@ -1,0 +1,22 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:complexType name="preposition">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="get" type="verb"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="post" type="verb"/>
+        </xs:choice>
+        <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+
+    <xs:complexType name="verb">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element minOccurs="0" name="onComplete" type="preposition"/>
+            <xs:element minOccurs="0" name="onError" type="preposition"/>
+        </xs:choice>
+        <xs:anyAttribute processContents="skip"/>
+    </xs:complexType>
+
+    <xs:element name="decree" type="preposition"/>
+    <xs:element name="bulletin" type="verb"/>
+
+</xs:schema>
